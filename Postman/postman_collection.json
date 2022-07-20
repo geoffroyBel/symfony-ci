@@ -12,7 +12,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.environment.set(\"username\", pm.response.json.username)",
+							"pm.environment.set(\"username\", pm.response.json().email)",
 							"pm.test(\"Status Code\", () => {",
 							"    pm.response.to.have.status(201)",
 							"})"
@@ -238,7 +238,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\n    \"name\": \"modif\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
