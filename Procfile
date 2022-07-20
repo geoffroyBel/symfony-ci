@@ -1,1 +1,1 @@
-echo 'web: heroku-php-apache2 project/public/' > Procfile
+web: heroku-php-apache2 public/
