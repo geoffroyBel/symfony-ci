@@ -70,10 +70,9 @@
 		},
 		"post-install-cmd": [
             "@auto-scripts",
-            "mkdir -p config/jwt",
-            "openssl genrsa -out config/jwt/private.pem 4096",
-            "openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem",
-            "chmod -R 775 config/"
+        ],
+		"compile": [
+            "@php bin/console lexik:jwt:generate-keypair --overwrite --quiet --env prod"
         ],
 		"post-update-cmd": [
 			"@auto-scripts"
