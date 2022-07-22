@@ -6,7 +6,14 @@ orbs:
   newman: postman/newman@0.0.2
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-
+jobs:
+  newman-collection-run:
+  executor: newman/postman-newman-docker
+  steps:
+    - checkout
+    - newman/newman-run:
+       collection: ./postman/collection.json
+       environment: ./postman/environment.json 
 jobs:
 
   build:
@@ -63,10 +70,3 @@ jobs:
       - run:
           name: "Run tests"
           command: composer test
-  newman-collection-run:
-   executor: newman/postman-newman-docker
-   steps:
-     - checkout
-     - newman/newman-run:
-         collection: ./postman/collection.json
-         environment: ./postman/environment.json 
