@@ -64,9 +64,7 @@ jobs:
           name: "Run tests"
           command: composer test
       
+      - run: newman run ./postman/collection.json -e ./postman/environment.json
 
-      - newman/newman-run:
-          collection: ./postman/collection.json
-          environment: ./postman/environment.json 
 
 
