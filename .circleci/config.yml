@@ -8,7 +8,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   newman-collection-run:
-  executor: newman/postman-newman-docker
+   executor: newman/postman-newman-docker
   steps:
     - checkout
     - newman/newman-run:
