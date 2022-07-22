@@ -63,7 +63,7 @@ jobs:
       - run:
           name: "Run tests"
           command: composer test
-          
+
   newman-collection-run:
    executor: newman/postman-newman-docker
    steps:
@@ -71,3 +71,7 @@ jobs:
      - newman/newman-run:
          collection: ./postman/collection.json
          environment: ./postman/environment.json 
+workflows:
+  conduit-automated-tests:
+    jobs:
+      - newman-collection-run
