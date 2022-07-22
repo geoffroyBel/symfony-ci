@@ -1,0 +1,29 @@
+{
+	"id": "7e9a0807-d41a-4995-8f31-f84755f5f138",
+	"name": "TEST API ENV",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://fast-journey-58273.herokuapp.com",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "Kraig_Cartwright1@yahoo.com",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTg0MTQxODUsImV4cCI6MTY1ODQxNzc4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiS3JhaWdfQ2FydHdyaWdodDFAeWFob28uY29tIn0.J6SdjEKGlGeL4HS4DaxHSROv1018EQnSakdr2Jgh22jVT_ySJ4C3u1xFeHbK_zOTb-5_BhJDwZxrTynH1QBy6JSyNnAKFR4RgI__iG0VmCgUsjGtqTlpx8cCXKy9FlWf-leWVTcEu0lfV9-90vuyYAIiPSMpVGEaUh-edgiEFT8QqFHZx5pq2yKg9QpmnwiPHJQ8d7SArxuRH7C46VaDxQBSzVvo60G-aBhR4PKw1i-JVuqsQv1cbxiPPvauJml0lQUR8jAZNBz8DfObZTipWxpDFNbGzGiWjm7Ivce3ze2VF_LLhv_ByTdL4NFhtCKItq-38_fN3XYqqHCM8i5j9Oq8UPELaLICJreW4ODHGt1bfxIAxPkxOtN4rBI2Alz7XQOgiW99M4BKyOnYZ2qe-CmdjvF455M5JjpbU7LYj8yIyZWEsIRTQ6UPqHoKUDnewXazLkeAgHLTQT4OWbXKKiRpubZPO3LfMrLn4zd9s2yUeSMqIDOdfBQGQ8S42FKIW9niUT9gEVOph7CpL2dXwtBAewTKRE061aVyLV_BYx0yJoglUuaVoPWgGREP9fbrM34oRasueDdBFrhlfmjhEqpdWQtufZoDmbDQVCZNXtescToXW9t-fInYNFl7BEByZyIUSDYjb5jjaRE6fpvF-Oi6W9Djex2yBTqPkyCguZo",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": 14,
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-07-22T15:32:42.595Z",
+	"_postman_exported_using": "Postman/7.36.7"
+}

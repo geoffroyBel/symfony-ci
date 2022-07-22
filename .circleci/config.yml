@@ -2,7 +2,8 @@
 # PHP CircleCI 2.0 configuration file
 # See: https://circleci.com/docs/2.0/language-php/
 version: 2
-
+orbs:
+  newman: postman/newman@1.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -60,3 +61,12 @@ jobs:
       - run:
           name: "Run tests"
           command: composer test
+  newman-collection-run-env-timeout:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./postman/collection.json
+          environment: ./postman/environment.json
+          timeout: '1000'
+workflows: null
