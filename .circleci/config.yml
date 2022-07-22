@@ -61,7 +61,7 @@ jobs:
       - run:
           name: "Run tests"
           command: composer test
-  newman-collection-run-env-timeout:
+  newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
       - checkout
@@ -69,4 +69,7 @@ jobs:
           collection: ./postman/collection.json
           environment: ./postman/environment.json
           timeout: '1000'
-workflows: null
+workflows:
+  conduit-automated-tests:
+    jobs:
+      - newman-collection-run
