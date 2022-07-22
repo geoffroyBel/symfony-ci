@@ -23,7 +23,7 @@ jobs:
       # - image: circleci/mysql:5.7-ram
       #
       # - image: redis:2.8.19
-    executor: newman/postman-newman-docker
+    -image: newman/postman-newman-docker
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
