@@ -24,7 +24,7 @@ jobs:
       # - image: circleci/mysql:5.7-ram
       #
       # - image: redis:2.8.19
-
+    executor: newman/postman-newman-docker
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -63,15 +63,9 @@ jobs:
       - run:
           name: "Run tests"
           command: composer test
+      
+      - newman/newman-run:
+          collection: ./postman/collection.json
+          environment: ./postman/environment.json 
 
-  newman-collection-run:
-   executor: newman/postman-newman-docker
-   steps:
-     - checkout
-     - newman/newman-run:
-         collection: ./postman/collection.json
-         environment: ./postman/environment.json 
-workflows:
-  conduit-automated-tests:
-    jobs:
-      - newman-collection-run
+
