@@ -52,6 +52,5 @@ workflows:
   conduit-automated-tests:
     jobs:
       - newman-collection-run
-  heroku_deploy:
-    jobs:
       - heroku/deploy-via-git
+      
