@@ -49,8 +49,12 @@ workflows:
   install:
     jobs:
       - install_php
-  conduit-automated-tests:
+  #conduit-automated-tests:
+  #  jobs:
+  #    - newman-collection-run
+  heroku_deploy:
     jobs:
-      - newman-collection-run
-      - heroku/deploy-via-git
-      
+      - heroku/deploy-via-git:
+          requires:
+              - build
+              - newman-collection-run
