@@ -6,6 +6,7 @@ version: 2.1
 orbs:
   newman: postman/newman@0.0.2
   php: circleci/php@1.1.0
+  heroku: circleci/heroku@1.2.6
 jobs:
   install_php:
     docker:
@@ -51,3 +52,6 @@ workflows:
   conduit-automated-tests:
     jobs:
       - newman-collection-run
+  heroku_deploy:
+    jobs:
+      - heroku/deploy-via-git
