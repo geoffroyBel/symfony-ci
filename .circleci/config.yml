@@ -46,15 +46,17 @@ jobs:
           collection: ./postman/collection.json
           environment: ./postman/environment.json
 workflows:
-  install:
-    jobs:
-      - install_php
+  #install:
+  #  jobs:
+  #    - install_php
   #conduit-automated-tests:
   #  jobs:
   #    - newman-collection-run
   heroku_deploy:
     jobs:
+      - install_php
       - newman-collection-run
       - heroku/deploy-via-git:
           requires:
               - newman-collection-run
+              - install_php
