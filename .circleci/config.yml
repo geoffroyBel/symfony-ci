@@ -54,6 +54,7 @@ workflows:
   #    - newman-collection-run
   heroku_deploy:
     jobs:
+      - newman-collection-run
       - heroku/deploy-via-git:
           requires:
               - newman-collection-run
