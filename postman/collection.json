@@ -23,7 +23,10 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [{
+					"key": "Content-Type",
+					"value": "application/json"
+				  }],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"123secret\"\n}",
@@ -63,7 +66,12 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"email\": \"{{username}}\",\n    \"password\": \"123secret\"\n}",
@@ -104,7 +112,12 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"123secret\"\n}",
@@ -155,7 +168,12 @@
 					]
 				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"name\": \"{{$randomLoremWord}}\"\n}",
@@ -210,7 +228,10 @@
 					]
 				},
 				"method": "PUT",
-				"header": [],
+				"header": [{
+					"key": "Content-Type",
+					"value": "application/json"
+				  }],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"name\": \"modif\"\n}",
@@ -261,7 +282,10 @@
 					]
 				},
 				"method": "DELETE",
-				"header": [],
+				"header": [{
+					"key": "Content-Type",
+					"value": "application/json"
+				  }],
 				"body": {
 					"mode": "raw",
 					"raw": "",
