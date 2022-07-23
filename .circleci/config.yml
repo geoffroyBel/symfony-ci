@@ -55,7 +55,6 @@ workflows:
   heroku_deploy:
     jobs:
       - build
-      - newman-collection-run
       - heroku/deploy-via-git:
           requires:
               - build
