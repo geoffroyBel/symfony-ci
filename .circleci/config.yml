@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/prestation
     docker:
-      - image: circleci/php:8.0.3-apache-node-browsers-legacy
+      - image: cimg/8.1.9-browsers
         environment:
           APP_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/db_test
