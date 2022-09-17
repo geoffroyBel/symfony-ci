@@ -11,9 +11,6 @@ jobs:
       #     MYSQL_ROOT_PASSWORD: root
       #     MYSQL_DATABASE: db_test_test
       - image: cimg/mysql:8.0
-        auth:
-          username: root
-          password: root # context / project UI env-var reference
         environment:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: db_test
