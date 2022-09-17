@@ -1,6 +1,6 @@
 <?php
 
-// namespace App\Entity;
+ namespace App\Entity;
 
 // use ApiPlatform\Core\Annotation\ApiResource;
 // use App\Repository\ReservationRepository;
