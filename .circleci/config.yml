@@ -1,20 +1,20 @@
-
-# PHP CircleCI 2.0 configuration file
-# See: https://circleci.com/docs/2.0/language-php/
-
 version: 2.1
-orbs:
-  newman: postman/newman@0.0.2
-  php: circleci/php@1.1.0
-  heroku: circleci/heroku@1.2.6
 jobs:
-  install_php:
+  build:
+    working_directory: ~/prestation
     docker:
-      - image: 'cimg/php:8.1.7'
+      - image: circleci/php:8.0.3-apache-node-browsers-legacy
+        environments:
+          APP_ENV: test
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/db_test
+      - image: circleci/mysql:5.7
+        environments:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: db_test
     steps:
       - checkout
       - php/install-php:
-          version: '8.1'
+          version: "8.0"
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo apt install -y libsqlite3-dev zlib1g-dev mariadb-client zlib1g-dev
       - run: sudo docker-php-ext-install zip pdo_mysql
@@ -33,30 +33,64 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-      - run:
-          name: "Run tests"
-          command: composer test
+# # PHP CircleCI 2.0 configuration file
+# # See: https://circleci.com/docs/2.0/language-php/
 
-  newman-collection-run:
-    executor: newman/postman-newman-docker
-    steps:
-      - checkout
+# version: 2.1
+# orbs:
+#   newman: postman/newman@0.0.2
+#   php: circleci/php@1.1.0
+#   heroku: circleci/heroku@1.2.6
+# jobs:
+#   install_php:
+#     docker:
+#       - image: 'cimg/php:8.1.7'
+#     steps:
+#       - checkout
+#       - php/install-php:
+#           version: '8.1'
+#       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+#       - run: sudo apt install -y libsqlite3-dev zlib1g-dev mariadb-client zlib1g-dev
+#       - run: sudo docker-php-ext-install zip pdo_mysql
+#       - run: sudo docker-php-ext-enable zip pdo_mysql
+#       - run: sudo composer self-update
+#       - restore_cache:
+#           keys:
+#             # "composer.lock" can be used if it is committed to the repo
+#             - v1-dependencies-{{ checksum "composer.json" }}
+#             # fallback to using the latest cache if no exact match is found
+#             - v1-dependencies-
 
-      - newman/newman-run:
-          collection: ./postman/collection.json
-          environment: ./postman/environment.json
-workflows:
-  #install:
-  #  jobs:
-  #    - install_php
-  #conduit-automated-tests:
-  #  jobs:
-  #    - newman-collection-run
-  heroku_deploy:
-    jobs:
-      - install_php
-      - newman-collection-run
-      - heroku/deploy-via-git:
-          requires:
-              - newman-collection-run
-              - install_php
+#       - run: composer install -n --prefer-dist
+
+#       - save_cache:
+#           key: v1-dependencies-{{ checksum "composer.json" }}
+#           paths:
+#             - ./vendor
+#       - run:
+#           name: "Run tests"
+#           command: composer test
+
+#   newman-collection-run:
+#     executor: newman/postman-newman-docker
+#     steps:
+#       - checkout
+
+#       - newman/newman-run:
+#           collection: ./postman/collection.json
+#           environment: ./postman/environment.json
+# workflows:
+#   #install:
+#   #  jobs:
+#   #    - install_php
+#   #conduit-automated-tests:
+#   #  jobs:
+#   #    - newman-collection-run
+#   heroku_deploy:
+#     jobs:
+#       - install_php
+#       - newman-collection-run
+#       - heroku/deploy-via-git:
+#           requires:
+#               - newman-collection-run
+#               - install_php
