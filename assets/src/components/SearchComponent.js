@@ -30,7 +30,7 @@ const SearchComponent = ({ prestationEventListener }) => {
 			eventSource.close();
 		};
 	}, []);
-	return <div>SearchComponent</div>;
+	return <div>SearchComponent test mercure</div>;
 };
 
 export default connect(null, prestationsActions)(SearchComponent);
