@@ -10,10 +10,10 @@ jobs:
       #   environment:
       #     MYSQL_ROOT_PASSWORD: root
       #     MYSQL_DATABASE: db_test_test
-      - image: cimg/mysql:8.0
-        environment:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: db_test
+      # - image: cimg/mysql:8.0
+      #   environment:
+      #     MYSQL_ROOT_PASSWORD: root
+      #     MYSQL_DATABASE: db_test
 
     steps:
       - checkout
