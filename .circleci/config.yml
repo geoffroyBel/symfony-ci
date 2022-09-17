@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: cimg/php:8.1.7-browsers
         environment:
-          DATABASE_URL: mysql://root:root@127.0.0.1:3306/db
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/db_test
       # - image: circleci/mysql:5.7
       #   environment:
       #     MYSQL_ROOT_PASSWORD: root
@@ -36,7 +36,8 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-      - run: php bin/console doctrine:migrations:migrate --env=test --no-interaction
+      - run: php bin/console make:migration --no-interaction
+      - run: php bin/console doctrine:migrations:migrate --no-interaction
 # # PHP CircleCI 2.0 configuration file
 # # See: https://circleci.com/docs/2.0/language-php/
 
