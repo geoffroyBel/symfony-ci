@@ -17,7 +17,7 @@ jobs:
       # - run: sudo apt install -y libsqlite3-dev zlib1g-dev mariadb-client zlib1g-dev
       - run: sudo docker-php-ext-install zip pdo_mysql
       - run: sudo docker-php-ext-enable zip pdo_mysql
-      - run: dockerize -wait tcp://127.0.0.1:3306 -timeout -120s
+      - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
       - run: sudo composer self-update
       - restore_cache:
           keys:
