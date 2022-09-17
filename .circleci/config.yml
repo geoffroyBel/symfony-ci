@@ -10,10 +10,10 @@ jobs:
       #   environment:
       #     MYSQL_ROOT_PASSWORD: root
       #     MYSQL_DATABASE: db_test_test
-      # - image: cimg/mysql:8.0
-      #   environment:
-      #     MYSQL_ROOT_PASSWORD: root
-      #     MYSQL_DATABASE: db_test
+      - image: cimg/mysql:8.0
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          #MYSQL_DATABASE: db_test
 
     steps:
       - checkout
@@ -37,6 +37,7 @@ jobs:
           paths:
             - ./vendor
       # - run: ./bin/console doctrine:schema:create --env=test
+      - run: ./bin/console doctrine:database:create
       - run: php bin/console doctrine:migrations:migrate --no-interaction
 # # PHP CircleCI 2.0 configuration file
 # # See: https://circleci.com/docs/2.0/language-php/
