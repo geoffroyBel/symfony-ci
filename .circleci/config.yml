@@ -12,8 +12,8 @@ jobs:
           MYSQL_DATABASE: db_test_test
     steps:
       - checkout
-      # - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      # - run: sudo apt install -y libsqlite3-dev zlib1g-dev mariadb-client zlib1g-dev
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo apt install -y libsqlite3-dev zlib1g-dev mariadb-client zlib1g-dev
       - run: sudo docker-php-ext-install zip pdo_mysql
       - run: sudo docker-php-ext-enable zip pdo_mysql
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
