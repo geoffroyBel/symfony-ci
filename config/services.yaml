@@ -79,9 +79,7 @@ services:
   JoliCode\Elastically\Mapping\YamlProvider:
     arguments:
       $configurationDirectory: "%kernel.project_dir%/config/elasticsearch"
-  App\Services\Test:
-    arguments:
-      $configurationDirectory: "%kernel.project_dir%/config/elasticsearch"
+
   JoliCode\Elastically\IndexBuilder:
     arguments:
       $mappingProvider: '@JoliCode\Elastically\Mapping\YamlProvider'
