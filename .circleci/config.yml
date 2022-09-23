@@ -23,7 +23,7 @@ jobs:
       - run: sudo docker-php-ext-install zip pdo_mysql
       - run: curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
       - run: sudo apt install -y symfony-cli
-      - run: sudo apt-get install lsof
+      - run: sudo sudo apt-get install lsof
       - run: sudo docker-php-ext-enable zip pdo_mysql
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
       - run: sudo composer self-update
@@ -46,9 +46,9 @@ jobs:
       - run: php bin/console doctrine:migrations:migrate --no-interaction
       - run:
           name: Run web server
-          command: symfony server:start 127.0.0.1:8741
+          command: symfony server:start --port=8741
           background: true
-      - run: sudo lsof -i -P -n | grep LISTEN
+      - run: echo " ip $(sudo lsof -i -P -n | grep LISTEN)"
       - run:
           name: "Run Behat test"
           command: vendor/bin/behat
