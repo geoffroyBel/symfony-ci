@@ -45,6 +45,9 @@ jobs:
           name: Run web server
           command: php bin/console server:run
           background: true
+      - run:
+          name: "Run Behat test"
+          command: vendor/bin/behat
 # # PHP CircleCI 2.0 configuration file
 # # See: https://circleci.com/docs/2.0/language-php/
 
