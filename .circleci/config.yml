@@ -43,7 +43,7 @@ jobs:
       - run: php bin/console doctrine:migrations:migrate --no-interaction
       - run:
           name: Run web server
-          command: php bin/console server:run
+          command: php bin/console server:start
           background: true
       - run:
           name: "Run Behat test"
