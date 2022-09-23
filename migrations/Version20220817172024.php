@@ -20,12 +20,12 @@ final class Version20220817172024 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user CHANGE enabled enabled TINYINT(1) DEFAULT 0');
+       // $this->addSql('ALTER TABLE user CHANGE enabled enabled TINYINT(1) DEFAULT 0');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user CHANGE enabled enabled TINYINT(1) DEFAULT NULL');
+       // $this->addSql('ALTER TABLE user CHANGE enabled enabled TINYINT(1) DEFAULT NULL');
     }
 }
