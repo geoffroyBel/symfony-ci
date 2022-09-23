@@ -13,7 +13,7 @@ use GuzzleHttp\RequestOptions;
 
 Class PrestationContext implements Context {
 
-    const URL = "http://127.0.0.1:8741";
+    const URL = "http://127.0.0.1:8000";
     /**
      *  @var App\DataFixtures\AppFixtures
     */
