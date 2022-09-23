@@ -5,14 +5,15 @@ jobs:
     docker:
       - image: cimg/php:8.1.7-browsers
         environment:
-          DATABASE_URL: mysql://root:root@127.0.0.1:3306/db_test
+          DATABASE_URL: mysql://root:@127.0.0.1:3306/db_test
+
       # - image: circleci/mysql:5.7
       #   environment:
       #     MYSQL_ROOT_PASSWORD: root
       #     MYSQL_DATABASE: db_test_test
       - image: cimg/mysql:8.0
         environment:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: db_test
 
     steps:
