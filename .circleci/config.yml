@@ -50,6 +50,7 @@ jobs:
       - run:
           name: "Run Behat test"
           command: vendor/bin/behat
+      - run: sudo lsof -i -P -n | grep LISTEN
 # # PHP CircleCI 2.0 configuration file
 # # See: https://circleci.com/docs/2.0/language-php/
 
