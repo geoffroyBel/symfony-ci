@@ -20,12 +20,12 @@ final class Version20220816223352 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD password_changed_date INT DEFAULT NULL');
+        //$this->addSql('ALTER TABLE user ADD password_changed_date INT DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user DROP password_changed_date');
+       // $this->addSql('ALTER TABLE user DROP password_changed_date');
     }
 }
