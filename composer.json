@@ -12,17 +12,28 @@
 		"doctrine/doctrine-bundle": "^2.7",
 		"doctrine/doctrine-migrations-bundle": "^3.2",
 		"doctrine/orm": "^2.12",
+		"guzzlehttp/guzzle": "^7.5",
+		"jolicode/elastically": "^1.5",
+		"lcobucci/jwt": "^4.2",
 		"lexik/jwt-authentication-bundle": "^2.16",
 		"nelmio/cors-bundle": "^2.2",
 		"phpdocumentor/reflection-docblock": "^5.3",
 		"phpstan/phpdoc-parser": "^1.6",
 		"symfony/apache-pack": "^1.0",
 		"symfony/asset": "6.0.*",
+		"symfony/browser-kit": "6.0.*",
 		"symfony/console": "6.0.*",
+		"symfony/doctrine-messenger": "6.0.*",
 		"symfony/dotenv": "6.0.*",
 		"symfony/expression-language": "6.0.*",
 		"symfony/flex": "^2",
 		"symfony/framework-bundle": "6.0.*",
+		"symfony/google-mailer": "6.0.*",
+		"symfony/http-client": "6.0.*",
+		"symfony/mailer": "6.0.*",
+		"symfony/mercure-bundle": "^0.3.2",
+		"symfony/messenger": "6.0.*",
+		"symfony/monolog-bundle": "^3.8",
 		"symfony/property-access": "6.0.*",
 		"symfony/property-info": "6.0.*",
 		"symfony/proxy-manager-bridge": "6.0.*",
@@ -31,6 +42,7 @@
 		"symfony/serializer": "6.0.*",
 		"symfony/twig-bundle": "6.0.*",
 		"symfony/validator": "6.0.*",
+		"symfony/webpack-encore-bundle": "^1.15",
 		"symfony/yaml": "6.0.*"
 	},
 	"config": {
@@ -76,8 +88,8 @@
 			"@auto-scripts"
 		],
 		"test": [
-            "./bin/phpunit"
-        ]
+			"./bin/phpunit"
+		]
 	},
 	"conflict": {
 		"symfony/symfony": "*"
@@ -89,6 +101,11 @@
 		}
 	},
 	"require-dev": {
+		"behat/behat": "^3.11",
+		"coduo/php-matcher": "^6.0",
+		"doctrine/doctrine-fixtures-bundle": "^3.4",
+		"friends-of-behat/symfony-extension": "^2.3",
+		"fzaninotto/faker": "^1.5",
 		"symfony/maker-bundle": "^1.44",
 		"symfony/phpunit-bridge": "^6.1"
 	}
