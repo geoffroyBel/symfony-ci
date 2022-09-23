@@ -51,7 +51,7 @@ jobs:
 
       - run:
           name: "Run Behat test"
-          command: php APP_EN=test ./vendor/bin/behat
+          command: vendor/bin/behat
 # # PHP CircleCI 2.0 configuration file
 # # See: https://circleci.com/docs/2.0/language-php/
 
