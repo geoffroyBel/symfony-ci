@@ -103,9 +103,9 @@ class AppFixtures extends Fixture
             /** @var Prestation */
             $prestation = new Prestation();
             $prestation->setName($this->faker->name);
-            $prestation->setCreated($this->faker->dateTimeThisYear);
-            $ownerReference = $this->getRandomUserReference($prestation);
-            $prestation->setOwner($ownerReference);
+            // $prestation->setCreated($this->faker->dateTimeThisYear);
+            // $ownerReference = $this->getRandomUserReference($prestation);
+            // $prestation->setOwner($ownerReference);
             $this->setReference("prestation_$i", $prestation);
 
             $manager->persist($prestation);
