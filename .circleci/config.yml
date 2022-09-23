@@ -45,7 +45,7 @@ jobs:
       - run: php bin/console doctrine:migrations:migrate --no-interaction
       - run:
           name: Run web server
-          command: symfony serve
+          command: symfony server:start --port=8741
           background: true
       - run:
           name: "Run Behat test"
