@@ -7,9 +7,12 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Elastica\Request;
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
+use PhpParser\Node\Stmt\TryCatch;
+
 //use PHPUnit\Framework\Assert as Assertions;
 
 Class PrestationContext implements Context {
@@ -79,10 +82,15 @@ Class PrestationContext implements Context {
      */
     public function iSendRequestToWithBody($arg1, $arg2, $body)
     {
-        $this->response = $this->client->request($arg1, $arg2, [
-            RequestOptions::JSON => json_decode($body, true),
-            RequestOptions::HEADERS => $this->headers
-        ]);
+        Try {
+            $this->response = $this->client->request($arg1, $arg2, [
+                RequestOptions::JSON => json_decode($body, true),
+                RequestOptions::HEADERS => $this->headers
+            ]);
+        } catch(Exception $error) {
+            var_dump($error->getMessage());
+        }
+
      
     }
 
