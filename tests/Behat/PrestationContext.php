@@ -10,7 +10,7 @@ use Elastica\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use PHPUnit\Framework\Assert as Assertions;
+//use PHPUnit\Framework\Assert as Assertions;
 
 Class PrestationContext implements Context {
 
@@ -61,7 +61,7 @@ Class PrestationContext implements Context {
         ]);
         $body = $res->getBody();
         $json = json_decode($body->getContents(), true);
-        Assertions::assertTrue(isset($json["token"]), "token is present");
+       // Assertions::assertTrue(isset($json["token"]), "token is present");
         $this->headers["Authorization"] = "Bearer ". $json["token"];
 
     }
