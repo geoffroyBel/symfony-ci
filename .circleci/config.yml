@@ -48,9 +48,9 @@ jobs:
           name: Run web server
           command: symfony server:start --port=8741
           background: true
-      - run:
-          name: "Run tests"
-          command: composer test
+      # - run:
+      #     name: "Run tests"
+      #     command: composer test
       - run:
           name: "Run Behat test"
           command: vendor/bin/behat
