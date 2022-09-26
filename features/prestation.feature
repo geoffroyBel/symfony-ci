@@ -4,8 +4,8 @@ Feature:
     I want to have a demo scenario
  @createSchema
  Scenario: Create a prestation
-  Given I am authenticated as "admi"
-  When I add "Content-Type" header equal to "application/ld+json"
+  When I am authenticated as "admi"
+  And I add "Content-Type" header equal to "application/ld+json"
   And I add "Accept" header equal to "application/ld+json"
   And I send "Post" request to "/api/prestations" with body:
   """
