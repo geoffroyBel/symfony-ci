@@ -61,10 +61,10 @@ Class PrestationContext implements Context {
         ]);
         $body = $res->getBody();
         $json = json_decode($body->getContents(), true);
-        var_dump($json["token"]);
+        //var_dump($json["token"]);
       
        // Assertions::assertTrue(isset($json["token"]), "token is present");
-        $this->headers["Authorization"] = "Bearer ". $json["token"];
+        //$this->headers["Authorization"] = "Bearer ". $json["token"];
 
     }
     /**
