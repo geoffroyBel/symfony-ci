@@ -67,7 +67,7 @@ Class PrestationContext implements Context {
         //var_dump($json["token"]);
       
        // Assertions::assertTrue(isset($json["token"]), "token is present");
-        $this->headers["Authorization"] = "Bearer ". $json["token"];
+        $this->headers["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjM5MzU5NTUsImV4cCI6MTY2MzkzOTU1NSwicm9sZXMiOlsiUk9MRV9TVVBFUkFETUlOIiwiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiYWRtaW4ifQ.VZ5mASCmYnhvuSV6it8Wdpe9tPFfoYtTv55Yt7GbMcOrACODlZzh9b0wXR7uh04RIHi63rNYnKwPdVyfGEoFCFQfaGKh6inqiv1t7KLQq68xsLdwhfSZKaK475DIHFTrZWbJ-WFK6fLUq50GthFrrEUq474ulty_7SArPsoBa0k-ULQU87j2hx8etLMTXRV3U0qt5APLEDygjaGuV2PlzPfJKTMsT-VOXnYlRs8A2DoVM3lKnf0k2PurQ9mWE_4AfjiaxY4ZhzTjNdxn9ZwEK25P5Q_-2JSK_pv0K3ClbNePgdLIE_AbZcLTzL5eW9PJht-rEFysPlJzb0xyDitGKQ". $json["token"];
 
     }
     /**
