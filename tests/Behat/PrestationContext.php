@@ -10,6 +10,7 @@ use Elastica\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
+use PHPUnit\Framework\Assert as Assertions;
 
 Class PrestationContext implements Context {
 
@@ -42,6 +43,27 @@ Class PrestationContext implements Context {
             // You can set any number of default request options.
 
         ]);
+    }
+    /**
+     * @Given I am authenticated as :arg1
+     */
+    public function iAmAuthenticatedAs($arg1)
+    {
+        $res = $this->client->request("POST", "/api/login_check", [
+            RequestOptions::JSON => json_decode('{
+                "username": "admin",
+                "password": "Secret123#"
+            }', true),
+            RequestOptions::HEADERS => [
+                "Content-Type" => "application/ld+json",
+                "Accept"=> "application/ld+json"
+            ]
+        ]);
+        $body = $res->getBody();
+        $json = json_decode($body->getContents(), true);
+        Assertions::assertTrue(isset($json["token"]), "token is present");
+        $this->headers["Authorization"] = "Bearer ". $json["token"];
+
     }
     /**
      * @When I add :name header equal to :value
