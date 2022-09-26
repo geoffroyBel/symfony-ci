@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiSubresource;
-use App\Filter\SearchPrestationFilter;
+//use App\Filter\SearchPrestationFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PrestationRepository::class)]
@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         "put" => ["security" => "is_granted('IS_AUTHENTICATED_FULLY')"],
     ]
 )]
-#[ApiFilter(SearchPrestationFilter::class)]
+//#[ApiFilter(SearchPrestationFilter::class)]
 class Prestation
 {
     #[ORM\Id]
