@@ -55,7 +55,7 @@ Class PrestationContext implements Context {
         $res = $this->client->request("POST", "/api/login_check", [
             RequestOptions::JSON => json_decode('{
                 "username": "admin",
-                "password": "Secret123"
+                "password": "Secret123#"
             }', true),
             RequestOptions::HEADERS => [
                 "Content-Type" => "application/ld+json",
