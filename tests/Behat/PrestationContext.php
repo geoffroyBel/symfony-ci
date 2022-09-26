@@ -67,7 +67,7 @@ Class PrestationContext implements Context {
         //var_dump($json["token"]);
       
        // Assertions::assertTrue(isset($json["token"]), "token is present");
-        //$this->headers["Authorization"] = "Bearer ". $json["token"];
+        $this->headers["Authorization"] = "Bearer ". $json["token"];
 
     }
     /**
@@ -82,16 +82,10 @@ Class PrestationContext implements Context {
      */
     public function iSendRequestToWithBody($arg1, $arg2, $body)
     {
-        Try {
             $this->response = $this->client->request($arg1, $arg2, [
                 RequestOptions::JSON => json_decode($body, true),
                 RequestOptions::HEADERS => $this->headers
             ]);
-        } catch(Exception $error) {
-            var_dump($error->getMessage());
-        }
-
-     
     }
 
     /**
