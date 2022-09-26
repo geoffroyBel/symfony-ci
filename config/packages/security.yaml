@@ -8,7 +8,7 @@ security:
     app_user_provider:
       entity:
         class: App\Entity\User
-        property: email
+        property: username
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -29,7 +29,9 @@ security:
     api:
       pattern: ^/api
       stateless: true
-      jwt: ~
+      jwt:
+        authenticator: app.token_authenticator
+      user_checker: App\Security\UserEnabledChecker
 
     main:
       lazy: true
@@ -43,14 +45,23 @@ security:
 
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
+
   access_control:
-    - { path: ^/api/login, roles: PUBLIC_ACCESS }
-    - {
-        path: ^/api/user,
-        roles: IS_AUTHENTICATED_FULLY,
-        methods: [PUT, GET, DELETE, PATCH],
-      }
-    - { path: ^/api/prestations, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api, roles: PUBLIC_ACCESS }
+  role_hierarchy:
+    ROLE_COMPANY: ROLE_USER
+    ROLE_ADMIN: ROLE_COMPANY
+    ROLE_SUPERADMIN: ROLE_ADMIN
+  #role_hierarchy:
+  #  ROLE_ADMIN: ROLE_USER
+  #  ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+  #- { path: ^/api/login, roles: PUBLIC_ACCESS }
+  #- { path: ^/api/prestations, roles: PUBLIC_ACCESS }
+  #- {
+  #    path: ^/api/user,
+  #    roles: IS_AUTHENTICATED_FULLY,
+  #    methods: [PUT, GET, DELETE, PATCH],
+  # }
 
 when@test:
   security:
