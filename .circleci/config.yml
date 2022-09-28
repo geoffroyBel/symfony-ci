@@ -16,6 +16,16 @@ jobs:
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+        environment:
+          - transport.host: localhost
+          - network.host: 127.0.0.1
+          - http.port: 9200
+          #- cluster.name: es-cluster
+          - discovery.type: single-node
+          - xpack.security.enabled: false
+          - ES_JAVA_OPTS: "-Xms256m -Xmx256m" #8
+
     steps:
       - checkout
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
@@ -47,6 +57,9 @@ jobs:
           name: Run web server
           command: symfony server:start --port=8741
           background: true
+      - run:
+          name: Wait for ES startup
+          command: dockerize -wait tcp://127.0.0.1:9200
       - run:
           name: "Run tests"
           command: composer test
