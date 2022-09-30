@@ -75,6 +75,7 @@ services:
       $config:
         elastically_mappings_directory: "%kernel.project_dir%/config/elasticsearch"
         host: "%env(ELASTICSEARCH_HOST)%"
+        port: "%env(ELASTICSEARCH_PORT)%"
         transport: '@JoliCode\Elastically\Transport\HttpClientTransport'
       $logger: "@logger"
       $resultSetBuilder: '@JoliCode\Elastically\ResultSetBuilder'

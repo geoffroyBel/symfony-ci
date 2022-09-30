@@ -64,6 +64,9 @@ jobs:
           name: "Run tests"
           command: composer test
       - run:
+          name: "Create Index Command"
+          command: ./bin/console app:elasticsearch:create-index
+      - run:
           name: "Run Behat test"
           command: vendor/bin/behat
 # # PHP CircleCI 2.0 configuration file
