@@ -70,6 +70,7 @@ jobs:
       - run:
           name: "Messenger:Consume"
           command: ./bin/console messenger:consume async
+          background: true
       - run:
           name: "Run Behat test"
           command: vendor/bin/behat
