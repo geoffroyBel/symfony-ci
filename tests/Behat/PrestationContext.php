@@ -118,7 +118,6 @@ Class PrestationContext extends TestCase implements Context {
     {
        
         $body = (string) $this->response->getBody();
-        var_dump($body);
          $this->assertTrue($this->matcher->match($body,
              json_encode(json_decode($json))
         ));
