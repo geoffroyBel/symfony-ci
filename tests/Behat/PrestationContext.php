@@ -15,10 +15,11 @@ use GuzzleHttp\RequestOptions;
 
 
 use PHPUnit\Framework\Assert as ASSERT;
+use PHPUnit\Framework\TestCase;
 
 //use PHPUnit\Framework\Assert as Assertions;
 
-Class PrestationContext implements Context {
+Class PrestationContext extends TestCase implements Context {
 
     const URL = "http://localhost:8741";
     /**
@@ -118,7 +119,7 @@ Class PrestationContext implements Context {
        
         $body = (string) $this->response->getBody();
         var_dump($body);
-         ASSERT::assertTrue($this->matcher->match($body,
+         $this->assertTrue($this->matcher->match($body,
              json_encode(json_decode($json))
         ));
  
