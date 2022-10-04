@@ -2,7 +2,7 @@ Feature:
     In order to create a prestation
     As user
     I want to have a demo scenario
- @createSchema
+ 
  Scenario: Create a prestation
   When I am authenticated as "admi"
   And I add "Content-Type" header equal to "application/ld+json"
