@@ -37,13 +37,13 @@ final class SearchPrestationFilter extends AbstractContextAwareFilter
          $parameterName = $queryNameGenerator->generateParameterName($property); // Generate a unique parameter name to avoid collisions with other filters
          $searchQuery = new MultiMatch();
          $searchQuery->setFields([
- 
-             'name'
+            'name^3',
+            'name.autocomplete'
          ]); 
          $searchQuery->setQuery($value);
          $searchQuery->setType(MultiMatch::TYPE_MOST_FIELDS);
          $foundPosts = $this->client->getIndex('prestation')->search($searchQuery);
-       
+      
          $results = [];
          $ids = [];
          foreach ($foundPosts->getResults() as $result) { 
