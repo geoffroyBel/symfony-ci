@@ -44,7 +44,7 @@ jobs:
             - v1-dependencies-
 
       - run: composer install -n --prefer-dist
-
+      - run: composer require --dev symfony/phpunit-bridge
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
