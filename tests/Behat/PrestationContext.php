@@ -14,7 +14,7 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 
 
-use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Assert as ASSERT;
 
 //use PHPUnit\Framework\Assert as Assertions;
 
@@ -118,7 +118,7 @@ Class PrestationContext implements Context {
        
         $body = (string) $this->response->getBody();
         var_dump($body);
-         Assert::assertTrue($this->matcher->match($body,
+         ASSERT::assertTrue($this->matcher->match($body,
              json_encode(json_decode($json))
         ));
  
