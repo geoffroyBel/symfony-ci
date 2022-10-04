@@ -5,13 +5,16 @@ use App\DataFixtures\AppFixtures;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
+use Coduo\PHPMatcher\PHPMatcher;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Elastica\Request;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use PhpParser\Node\Stmt\TryCatch;
+
+
+use function PHPUnit\Framework\assertTrue;
 
 //use PHPUnit\Framework\Assert as Assertions;
 
@@ -35,6 +38,8 @@ Class PrestationContext implements Context {
     private $body;
     /** @var Response  */
     private $response;
+    /** @var PHPMatcher */
+    private $matcher;
     public function __construct(AppFixtures $fixtures, \Doctrine\ORM\EntityManagerInterface $em)
     {
         $this->em = $em;
@@ -46,6 +51,7 @@ Class PrestationContext implements Context {
             // You can set any number of default request options.
 
         ]);
+        $this->matcher = new PHPMatcher();
     }
     /**
      * @Given I am authenticated as :arg1
@@ -82,12 +88,41 @@ Class PrestationContext implements Context {
      */
     public function iSendRequestToWithBody($arg1, $arg2, $body)
     {
+
             $this->response = $this->client->request($arg1, $arg2, [
                 RequestOptions::JSON => json_decode($body, true),
                 RequestOptions::HEADERS => $this->headers
             ]);
     }
-
+    /**
+     * @Given I send :arg1 request to :arg2
+     */
+    public function iSendRequestTo($arg1, $arg2)
+    {
+        $this->response = $this->client->request($arg1, $arg2, [
+            RequestOptions::HEADERS => $this->headers
+        ]);
+    }
+    /**
+     * @When I wait :seconds seconds
+     */
+    public function iWaitSeconds($seconds)
+    {
+        sleep($seconds);
+    }
+    /**
+     * @Then the JSON matches expected template:
+     */
+    public function theJsonMatchesExpectedTemplate(PyStringNode $json)
+    {
+       
+        $body = (string) $this->response->getBody();
+        var_dump($body);
+         assertTrue($this->matcher->match($body,
+             json_encode(json_decode($json))
+        ));
+ 
+    }
     /**
      * @Then the response code should be :arg1
      */
