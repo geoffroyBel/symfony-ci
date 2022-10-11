@@ -61,6 +61,9 @@ jobs:
           command: symfony server:start --port=8741
           background: true
       - run:
+          name: Wait for Web Server startup
+          command: dockerize -wait tcp://127.0.0.1:8741
+      - run:
           name: Wait for ES startup
           command: dockerize -wait tcp://127.0.0.1:9200
       - run:
