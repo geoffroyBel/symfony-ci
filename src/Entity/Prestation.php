@@ -78,7 +78,7 @@ class Prestation
         // $topic2 = '@=iri(object.getOwner()) ~ "/?topic=" ~ escape(iri(object))';
         return [
             'private' => true,
-            'topics' => $topics
+           // 'topics' => $topics
         ];
     }
 
