@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Api\UrlGeneratorInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use App\Repository\PrestationRepository;
@@ -10,11 +11,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+
 use App\Filter\SearchPrestationFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PrestationRepository::class)]
 #[ApiResource(
+    mercure: 'object.getMercureOptions()',
    // mercure: ["private" => true],
     collectionOperations: [
         "post" ,// => ["security" => "is_granted('IS_AUTHENTICATED_FULLY')"],
@@ -58,8 +61,25 @@ class Prestation
 
     public function __construct()
     {
+     
         $this->horaires = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+
+   
+    }
+
+    public function getMercureOptions(): array
+    {
+        $topics = [];
+        $topics[] = "/api/prestations/". $this->getId();
+        $topics[] = '/api/users/'.$this->getOwner()?->getId().'/prestations/'. $this->getId(); 
+        // the '@=' prefix is required when using expressions for arguments in topics
+        // $topic1 = '@=iri(object)';
+        // $topic2 = '@=iri(object.getOwner()) ~ "/?topic=" ~ escape(iri(object))';
+        return [
+            'private' => true,
+            'topics' => $topics
+        ];
     }
 
     public function getId(): ?int
