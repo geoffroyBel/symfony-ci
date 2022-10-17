@@ -6,11 +6,12 @@ namespace App\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Entity\User;
+use App\Mailer\Mailer;
+use App\Security\TokenGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
@@ -23,12 +24,22 @@ class UserRegisterSubscriber implements EventSubscriberInterface
      */
     private $passwordHasher;
 
+    private $tokenGenerator;
+    /**
+     * @var Mailer
+     */
+    private $mailer;
+
 
     public function __construct(
-        UserPasswordHasherInterface $passwordHasher)
+        UserPasswordHasherInterface $passwordHasher,
+        TokenGenerator $tokenGenerator,
+        Mailer $mailer)
     {
 
         $this->passwordHasher = $passwordHasher;
+        $this->tokenGenerator = $tokenGenerator;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -49,7 +60,7 @@ class UserRegisterSubscriber implements EventSubscriberInterface
             return;
         }
         $entity->setPassword($this->passwordHasher->hashPassword($entity, $entity->getPassword()));
-        // $entity->setConfirmationToken($this->tokenGenerator->getRandomSecureToken());
-        // $this->mailer->sendConfirmationUser($entity);
+        $entity->setConfirmationToken($this->tokenGenerator->getRandomSecureToken());
+        //$this->mailer->sendConfirmationUser($entity);
     }
 }
