@@ -10,10 +10,10 @@ use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Elastica\Request;
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-
-
+use PhpParser\Node\Stmt\TryCatch;
 use PHPUnit\Framework\Assert as ASSERT;
 use PHPUnit\Framework\TestCase;
 
@@ -89,11 +89,15 @@ Class PrestationContext extends TestCase implements Context {
      */
     public function iSendRequestToWithBody($arg1, $arg2, $body)
     {
-
+        Try {
             $this->response = $this->client->request($arg1, $arg2, [
                 RequestOptions::JSON => json_decode($body, true),
                 RequestOptions::HEADERS => $this->headers
             ]);
+        } catch ( ServerException $e) {
+            var_dump($e);
+        }
+
     }
     /**
      * @Given I send :arg1 request to :arg2
