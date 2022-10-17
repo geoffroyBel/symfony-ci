@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Prestation;
-use App\Security\UserConfirmationService;
+// use App\Entity\Prestation;
+// use App\Security\UserConfirmationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use JoliCode\Elastically\Client;
-use JoliCode\Elastically\Messenger\IndexationRequest;
-use Elastica\Query\MultiMatch;
-use Symfony\Component\Mercure\HubInterface;
-use Symfony\Component\Mercure\Publisher;
-use Symfony\Component\Mercure\Update;
-use Symfony\Component\Serializer\SerializerInterface;
+// use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\Routing\Annotation\Route;
+// use JoliCode\Elastically\Client;
+// use JoliCode\Elastically\Messenger\IndexationRequest;
+// use Elastica\Query\MultiMatch;
+// use Symfony\Component\Mercure\HubInterface;
+// use Symfony\Component\Mercure\Publisher;
+// use Symfony\Component\Mercure\Update;
+// use Symfony\Component\Serializer\SerializerInterface;
 
 class DefaultController extends AbstractController
 {
