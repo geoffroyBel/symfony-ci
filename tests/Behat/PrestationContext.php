@@ -95,7 +95,7 @@ Class PrestationContext extends TestCase implements Context {
                 RequestOptions::HEADERS => $this->headers
             ]);
         } catch ( ServerException $e) {
-            var_dump($e);
+           var_dump($e->getMessage());
         }
 
     }
