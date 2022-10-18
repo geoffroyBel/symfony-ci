@@ -9,13 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     
-    /**
-     * @Route("/{reactRouting}",priority="-1", name="home", defaults={"reactRouting": null} , requirements={"reactRouting"=".+"})
-     */
-    public function index(): Response
-    {
-        return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
-    }
+    // /**
+    //  * @Route("/{reactRouting}",priority="-1", name="home", defaults={"reactRouting": null} , requirements={"reactRouting"=".+"})
+    //  */
+    // public function index(): Response
+    // {
+    //     return $this->render('index/index.html.twig', [
+    //         'controller_name' => 'IndexController',
+    //     ]);
+    // }
 }
